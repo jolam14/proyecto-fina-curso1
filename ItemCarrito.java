@@ -1,8 +1,10 @@
-package proyectofinal;
+package version2;
+
+import java.math.BigDecimal;
 
 public class ItemCarrito {
-    public Producto producto;
-    public int cantidad;
+    private Producto producto;
+    private int cantidad;
 
     public ItemCarrito(Producto producto, int cantidad) {
         this.producto = producto;
@@ -17,7 +19,17 @@ public class ItemCarrito {
         return cantidad;
     }
 
-    public double getSubtotal() {
-        return producto.getPrecio() * cantidad;
+    public BigDecimal getPrecio() {
+        return producto.getPrecio().multiply(new BigDecimal(cantidad));
     }
+
+    @Override
+    public String toString() {
+        return cantidad + " x " + producto.getNombre() + " (" + producto.getSku() + ")";
+    }
+
+	public BigDecimal subtotal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
