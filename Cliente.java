@@ -1,49 +1,41 @@
-package proyectofinal;
+package version2;
 
 public class Cliente {
-    private int numCarro;
-    private String cuilCuit;
-    private double montoCompra;
-    private double descuento;
-    private String fecha;
+    private String nombre;
+    private String apellido;
+    private String direccion;
+    private int edad;
+    private int vecesComprado;
 
-    public int getNumCarro() {
-        return numCarro;
+    public Cliente(String nombre, String apellido, String direccion, int edad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.edad = edad;
+        this.vecesComprado = 0;
     }
 
-    public void setNumCarro(int numCarro) {
-        this.numCarro = numCarro;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getCuilCuit() {
-        return cuilCuit;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setCuilCuit(String cuilCuit) {
-        this.cuilCuit = cuilCuit;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public double getMontoCompra() {
-        return montoCompra;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setMontoCompra(double montoCompra) {
-        this.montoCompra = montoCompra;
+    public int getVecesComprado() {
+        return vecesComprado;
     }
 
-    public double getDescuento() {
-        return descuento;
-    }
-
-    public void setDescuento(double descuento) {
-        this.descuento = descuento;
-    }
-
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void comprar() {
+        vecesComprado++;
     }
 }
