@@ -1,0 +1,41 @@
+package version2;
+import java.math.BigDecimal;
+
+
+public class Main {
+    
+    public static void main(String[] args) {
+        
+        // Crear productos
+        Producto producto1 = new Producto("1", "1234567890", "MacBook Pro", "Laptop de Apple", new BigDecimal("1299.00"));
+        Producto producto2 = new Producto("2", "1234567891", "iPhone 13", "Teléfono inteligente de Apple", new BigDecimal("799.00"));
+        Producto producto3 = new Producto("3", "1234567892", "iPad Pro", "Tablet de Apple", new BigDecimal("999.00"));
+        Producto producto4 = new Producto("4", "1234567893", "Samsung Galaxy S21", "Teléfono inteligente de Samsung", new BigDecimal("699.00"));
+        Producto producto5 = new Producto("5", "1234567894", "Samsung Galaxy Tab S7", "Tablet de Samsung", new BigDecimal("649.00"));
+        Producto producto6 = new Producto("6", "1234567895", "Sony PlayStation 5", "Consola de videojuegos de Sony", new BigDecimal("499.00"));
+        Producto producto7 = new Producto("7", "1234567896", "Nintendo Switch", "Consola de videojuegos de Nintendo", new BigDecimal("299.00"));
+        Producto producto8 = new Producto("8", "1234567897", "Bose QuietComfort 35 II", "Auriculares con cancelación de ruido de Bose", new BigDecimal("299.00"));
+        //para cliente
+        Cliente cliente1 = new Cliente("Juan", "Perez", "Calle 123", 30);
+        System.out.println("Nombre: " + cliente1.getNombre());
+        System.out.println("Apellido: " + cliente1.getApellido());
+        System.out.println("Direccion: " + cliente1.getDireccion());
+        System.out.println("Edad: " + cliente1.getEdad());
+        // Crear descuentos
+        Descuento descuentoFijo = new DescuentoFijo(null, new BigDecimal("150.00"));
+        DescuentoPorcentajeConTope descuentoPorcentajeConTope = new DescuentoPorcentajeConTope(new BigDecimal("0.05"), new BigDecimal("150.00"));
+       
+        BigDecimal precio = new BigDecimal("200.00");
+        DescuentoPorcentajeConTope descuentoPorcentajeConTope1 = new DescuentoPorcentajeConTope(new BigDecimal("5.00"), new BigDecimal("150.00"));
+        DescuentoFijo descuentoFijo1 = new DescuentoFijo(new BigDecimal("50.00"), new BigDecimal("50.00"));
+        Carrito carrito = new Carrito(precio);
+        BigDecimal precioFinal = precio;
+		try {
+			precioFinal = carrito.aplicarDescuentos(descuentoPorcentajeConTope1, descuentoFijo1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        System.out.println("El precio final es: " + precioFinal);
+            }
+        }
