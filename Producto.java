@@ -1,27 +1,44 @@
-package proyectofinal;
-	
-public class Producto {
-    public String nombre;
-    public double precio;
+package version2;
 
-    public Producto(String nombre, double precio) {
+import java.math.BigDecimal;
+
+public class Producto {
+    private String codigo;
+    private String sku;
+    private String nombre;
+    private String descripcion;
+    private BigDecimal precio;
+
+    public Producto(String codigo, String sku, String nombre, String descripcion, BigDecimal precio) {
+        this.codigo = codigo;
+        this.sku = sku;
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.precio = precio;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getSku() {
+        return sku;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public double getPrecio() {
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    @Override
+    public String toString() {
+        return nombre + " (" + sku + ")";
     }
 }
