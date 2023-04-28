@@ -1,40 +1,27 @@
-package proyectofinal;
+package version2;
+
+import java.math.BigDecimal;
 
 public abstract class Descuento {
-    private double montoDescuento;
-    protected boolean esPorcentaje;
-    private boolean esFijo;
+    private BigDecimal descripcion;
 
-    public Descuento(double montoDescuento, boolean esPorcentaje, boolean esFijo) {
-        this.montoDescuento = montoDescuento;
-        this.esPorcentaje = esPorcentaje;
-        this.esFijo = esFijo;
-  
+    public Descuento(BigDecimal porcentaje) {
+        this.descripcion = porcentaje;
+    }
+
+    public abstract BigDecimal calcularDescuento(BigDecimal precio) throws Exception;
+
+    public BigDecimal getDescripcion() {
+        return descripcion;
+    }
+
+	public BigDecimal calcularDescuento1(BigDecimal precio) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public double getMontoDescuento() {
-        return montoDescuento;
-    }
-
-    public void setMontoDescuento(double montoDescuento) {
-        this.montoDescuento = montoDescuento;
-    }
-
-    public boolean isEsPorcentaje() {
-        return esPorcentaje;
-    }
-
-    public void setEsPorcentaje(boolean esPorcentaje) {
-        this.esPorcentaje = esPorcentaje;
-    }
-
-    public boolean isEsFijo() {
-        return esFijo;
-    }
-
-    public void setEsFijo(boolean esFijo) {
-        this.esFijo = esFijo;
-    }
-
-    public abstract double calcularDescuento(double precioTotal);
+	public BigDecimal calcularDescuento(Carrito precio) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
