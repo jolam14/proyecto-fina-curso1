@@ -15,6 +15,15 @@ public class Main {
         Producto producto6 = new Producto("6", "1234567895", "Sony PlayStation 5", "Consola de videojuegos de Sony", new BigDecimal("499.00"));
         Producto producto7 = new Producto("7", "1234567896", "Nintendo Switch", "Consola de videojuegos de Nintendo", new BigDecimal("299.00"));
         Producto producto8 = new Producto("8", "1234567897", "Bose QuietComfort 35 II", "Auriculares con cancelación de ruido de Bose", new BigDecimal("299.00"));
+        Producto[] productos = {producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8};
+        BigDecimal subtotal = BigDecimal.ZERO;
+        
+        for (Producto producto : productos) {
+            subtotal = subtotal.add(producto.getPrecio());
+        }
+        char[] subtotalChars = subtotal.toString().toCharArray();
+        BigDecimal precio = new BigDecimal(subtotalChars);
+
         //para cliente
         Cliente cliente1 = new Cliente("Juan", "Perez", "Calle 123", 30);
         System.out.println("Nombre: " + cliente1.getNombre());
@@ -22,12 +31,11 @@ public class Main {
         System.out.println("Direccion: " + cliente1.getDireccion());
         System.out.println("Edad: " + cliente1.getEdad());
         // Crear descuentos
-        Descuento descuentoFijo = new DescuentoFijo(null, new BigDecimal("150.00"));
+        Descuento descuentoFijo = new DescuentoFijo(null);
         DescuentoPorcentajeConTope descuentoPorcentajeConTope = new DescuentoPorcentajeConTope(new BigDecimal("0.05"), new BigDecimal("150.00"));
-       
-        BigDecimal precio = new BigDecimal("200.00");
+
         DescuentoPorcentajeConTope descuentoPorcentajeConTope1 = new DescuentoPorcentajeConTope(new BigDecimal("5.00"), new BigDecimal("150.00"));
-        DescuentoFijo descuentoFijo1 = new DescuentoFijo(new BigDecimal("50.00"), new BigDecimal("50.00"));
+        DescuentoFijo descuentoFijo1 = new DescuentoFijo(new BigDecimal("50.00"));
         Carrito carrito = new Carrito(precio);
         BigDecimal precioFinal = precio;
 		try {
@@ -38,4 +46,4 @@ public class Main {
 		}
         System.out.println("El precio final es: " + precioFinal);
             }
-        }
+    
