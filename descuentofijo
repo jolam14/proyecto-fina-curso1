@@ -1,0 +1,34 @@
+package version2;
+
+import java.math.BigDecimal;
+
+public class DescuentoFijo extends Descuento {
+    private BigDecimal valor;
+    
+    public DescuentoFijo(BigDecimal descripcion, BigDecimal valor) {
+        super(descripcion);
+        this.valor = valor;
+     
+    }
+
+    @Override
+    public BigDecimal calcularDescuento(BigDecimal precio) throws Exception {
+        if (precio.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new Exception("El precio debe ser mayor a cero");
+        }
+        BigDecimal descuento = valor;
+        if (descuento == null) {
+            descuento = new BigDecimal("5");
+        }
+		return descuento;
+    }
+    @Override
+    public BigDecimal calcularDescuento1(BigDecimal precio) {
+       
+        System.out.println("Descuento aplicado: " + valor);
+        return valor;
+    
+    
+    }
+
+}
