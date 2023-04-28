@@ -1,52 +1,27 @@
-package proyectofinal;
-import java.util.ArrayList;
-import java.util.List;
+package version2;
+
+import java.math.BigDecimal;
 
 public class Carrito {
-    public List<ItemCarrito> items;
-    public double subtotal;
-    public double descuento;
-    public double total;
+    private BigDecimal precio = new BigDecimal("5");
 
-    public Carrito() {
-        this.items = new ArrayList<ItemCarrito>();
-        this.subtotal = 0;
-        this.descuento = 0;
-        this.total = 0;
+    public Carrito(BigDecimal precio) {
+        this.precio = precio;
     }
 
-    public void agregarItem(ItemCarrito item) {
-        this.items.add(item);
-        this.actualizarTotales();
+    public BigDecimal getPrecio() {
+        return precio;
     }
 
-    public void eliminarItem(int indice) {
-        this.items.remove(indice);
-        this.actualizarTotales();
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
     }
 
-    public List<ItemCarrito> getItems() {
-        return items;
-    }
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public double getDescuento() {
-        return descuento;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    private void actualizarTotales() {
-        this.subtotal = 0;
-        for (ItemCarrito item : items) {
-            this.subtotal += item.getSubtotal();
+    public BigDecimal aplicarDescuentos(Descuento... descuentos) throws Exception {
+        BigDecimal descuentoTotal = BigDecimal.ZERO;
+        for (Descuento descuento : descuentos) {
+            descuentoTotal = descuentoTotal.add(descuento.calcularDescuento(precio));
         }
-        this.descuento = this.subtotal >= 100 ? 0.1 * this.subtotal : 0;
-        this.total = this.subtotal - this.descuento;
+        return precio.subtract(descuentoTotal);
     }
 }
