@@ -1,25 +1,32 @@
-package proyectofinal;
+package version2;
 
+import java.math.BigDecimal;
 public class DescuentoPorcentajeConTope extends Descuento {
+    private BigDecimal tope;
 
-    private double tope;
-
-    public DescuentoPorcentajeConTope(double montoDescuento, boolean esPorcentaje, double tope) {
-        super(montoDescuento, esPorcentaje, false);
+    public DescuentoPorcentajeConTope(BigDecimal porcentaje, BigDecimal tope) {
+        super(porcentaje);
         this.tope = tope;
     }
 
-    public double calcularDescuento(double precioTotal) {
-        double descuento = 0;
-        if (esPorcentaje) {
-            descuento = precioTotal * calcularDescuento(0) / 100;
+    @Override
+    public BigDecimal calcularDescuento1(BigDecimal precio) throws Exception {
+        if (precio.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new Exception("El precio debe ser mayor a cero");
+        }
+        BigDecimal descuento = precio.multiply(getDescripcion()).divide(new BigDecimal("100"));
+        if (descuento.compareTo(tope) > 0) {
+            return tope;
         } else {
-            descuento = getMontoDescuento();
+            return descuento;
         }
-        if (descuento > tope) {
-            descuento = tope;
-        }
+    }
+    @Override
+    public BigDecimal calcularDescuento(BigDecimal precio) throws Exception {
+        BigDecimal descuento = super.calcularDescuento1(precio);
+        System.out.println("Descuento aplicado: " + descuento);
         return descuento;
     }
 
-}
+    }
+
