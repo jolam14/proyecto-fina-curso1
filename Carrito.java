@@ -24,4 +24,9 @@ public class Carrito {
         }
         return precio.subtract(descuentoTotal);
     }
+
+	public BigDecimal aplicarDescuentos(BigDecimal descuentoPorcentajeConTope1, DescuentoFijo descuentoFijo1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
