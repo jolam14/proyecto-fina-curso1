@@ -3,15 +3,13 @@ package version2;
 import java.math.BigDecimal;
 
 public class DescuentoFijo extends Descuento {
-    private BigDecimal valor;
-    
-    public DescuentoFijo(BigDecimal descripcion, BigDecimal valor) {
-        super(descripcion);
-        this.valor = valor;
-     
-    }
+    public DescuentoFijo(BigDecimal f) {
+		super(f);
+		// TODO Auto-generated constructor stub
+	}
+	public BigDecimal valor;
 
-    @Override
+	@Override
     public BigDecimal calcularDescuento(BigDecimal precio) throws Exception {
         if (precio.compareTo(BigDecimal.ZERO) <= 0) {
             throw new Exception("El precio debe ser mayor a cero");
