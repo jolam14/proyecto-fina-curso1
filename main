@@ -30,20 +30,21 @@ public class Main {
         System.out.println("Apellido: " + cliente1.getApellido());
         System.out.println("Direccion: " + cliente1.getDireccion());
         System.out.println("Edad: " + cliente1.getEdad());
-        // Crear descuentos
+     // Crear descuentos
         Descuento descuentoFijo = new DescuentoFijo(null);
-        DescuentoPorcentajeConTope descuentoPorcentajeConTope = new DescuentoPorcentajeConTope(new BigDecimal("0.05"), new BigDecimal("150.00"));
-
         DescuentoPorcentajeConTope descuentoPorcentajeConTope1 = new DescuentoPorcentajeConTope(new BigDecimal("5.00"), new BigDecimal("150.00"));
         DescuentoFijo descuentoFijo1 = new DescuentoFijo(new BigDecimal("50.00"));
+        DescuentoPorcentajeConTope descuentousado = descuentoPorcentajeConTope1;
+        // Calcular el valor del descuento
+        
+        System.out.println("Descuento aplicado: " + descuentousado);
         Carrito carrito = new Carrito(precio);
         BigDecimal precioFinal = precio;
-		try {
-			precioFinal = carrito.aplicarDescuentos(descuentoPorcentajeConTope1, descuentoFijo1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        try {
+            precioFinal = carrito.aplicarDescuentos(descuentoPorcentajeConTope1, descuentoFijo1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("El precio final es: " + precioFinal);
-            }
-    
+}
+}
