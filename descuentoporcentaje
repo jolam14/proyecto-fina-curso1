@@ -3,7 +3,7 @@ package version2;
 import java.math.BigDecimal;
 
 public class DescuentoPorcentaje extends Descuento {
-    private BigDecimal porcentaje;
+    public BigDecimal porcentaje;
 
     public DescuentoPorcentaje(BigDecimal bigDecimal, BigDecimal porcentaje) {
         super(porcentaje);
@@ -14,16 +14,16 @@ public class DescuentoPorcentaje extends Descuento {
 	@Override
 	public BigDecimal calcularDescuento(Carrito precio) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return porcentaje;
 	}
 
 	public BigDecimal getPorcentaje() {
 		// TODO Auto-generated method stub
-		return null;
+		return porcentaje;
 	}
 	@Override
 	public BigDecimal calcularDescuento(BigDecimal precio) {
-	    BigDecimal descuento = null;
+	    BigDecimal descuento = porcentaje;
 		try {
 			descuento = calcularDescuento1(precio);
 		} catch (Exception e) {
