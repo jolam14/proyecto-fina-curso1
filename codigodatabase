@@ -1,0 +1,43 @@
+create database carrito de compra
+
+use [carrito de compra]
+
+CREATE TABLE clientes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    direccion VARCHAR(100),
+    edad INT,
+    dni VARCHAR(20) UNIQUE NOT NULL
+);
+
+CREATE TABLE productos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    codigo VARCHAR(50) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(200),
+    precio DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE compras (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    num_carro VARCHAR(50) UNIQUE NOT NULL,
+    cuil_cuit VARCHAR(50) NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL,
+    descuento DECIMAL(10, 2) DEFAULT 0,
+    fecha DATE NOT NULL,
+    FOREIGN KEY (cuil_cuit) REFERENCES clientes(dni)
+);
+INSERT INTO clientes (nombre, apellido, direccion, edad, dni) VALUES ('Juan', 'Perez', 'Calle 123', 30, '26123123');
+
+INSERT INTO productos (codigo, nombre, descripcion, precio) VALUES 
+('1234567890', 'MacBook Pro', 'Laptop de Apple', 1299.00),
+('1234567891', 'iPhone 13', 'Teléfono inteligente de Apple', 799.00),
+('1234567892', 'iPad Pro', 'Tablet de Apple', 999.00),
+('1234567893', 'Samsung Galaxy S21', 'Teléfono inteligente de Samsung', 699.00),
+('1234567894', 'Samsung Galaxy Tab S7', 'Tablet de Samsung', 649.00),
+('1234567895', 'Sony PlayStation 5', 'Consola de videojuegos de Sony', 499.00),
+('1234567896', 'Nintendo Switch', 'Consola de videojuegos de Nintendo', 299.00),
+('1234567897', 'Bose QuietComfort 35 II', 'Auriculares con cancelación de ruido de Bose', 299.00);
+
+INSERT INTO compras (num_carro, cuil_cuit, monto, descuento, fecha) VALUES ('001', '26123123', 1000.00, 50.00, '2023-04-29');
